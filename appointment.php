@@ -1,3 +1,8 @@
+<?php
+         include 'connect.php';
+         $sql=mysqli_query($con,"SELECT * from booking_tb inner join patient_tb on booking_tb.patient_id=patient_tb.patient_id inner join hospital_tb on booking_tb.hsptl_id=hospital_tb.hsptl_id inner join doctor_tb on booking_tb.dr_id=doctor_tb.dr_id;");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -148,25 +153,25 @@ tr:nth-child(even){
       <div class="sidebar">
         <ul>
             <li>
-                <a href="admin.html">
+                <a href="admin.php">
                     <i class="fas fa-th-large"></i>
                     <div>Dashboard</div>
                 </a>
             </li>
             <li>
-                <a href="user.html">
+                <a href="user.php">
                     <i class="fas fa-user"></i>
                     <div>User</div>
                 </a>
             </li>
             <li>
-                <a href="hospital.html">
+                <a href="hospital.php">
                     <i class="fas fa-hospital"></i>
                     <div>Hospital</div>
                 </a>
             </li>
             <li>
-                <a href="appointment.html">
+                <a href="appointment.php">
                     <i class="far fa-calendar-alt"></i>
                     <div>Appointment</div>
                 </a>
@@ -181,7 +186,7 @@ tr:nth-child(even){
       </div>
       <div class="heading">
         <i class="fas fa-align-right"></i>
-        <h3>Doctor</h3>
+        <h3>Appointment</h3>
       </div>
       <div class="main">
         <div class="table">
@@ -190,48 +195,35 @@ tr:nth-child(even){
                     <tr>
                         <th>SI.No</th>
                         <th>Name</th>
-                        <th>Qualification</th>
-                        <th>Department</th>
-                        <th>Experiance</th>
-                        <th>Phone</th>
-                        <th>Email</th>
+                        <th>Appointment with</th>
+                        <!-- <th>Department</th> -->
+                        <th>Hospital</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Consultation</th>
+                        <th>Action</th>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Amina</td>
-                        <td>MBBS</td>
-                        <td>Cardiology</td>
-                        <td>5 years</td>
-                        <td>1234567890</td>
-                        <td>amina1@gmail.com</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Karthik</td>
-                        <td>MBBS</td>
-                        <td>Cardiology</td>
-                        <td>5 years</td>
-                        <td>1234567890</td>
-                        <td>amina1@gmail.com</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Rahul</td>
-                        <td>MBBS</td>
-                        <td>Cardiology</td>
-                        <td>5 years</td>
-                        <td>1234567890</td>
-                        <td>amina1@gmail.com</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Raniya</td>
-                        <td>MBBS</td>
-                        <td>Cardiology</td>
-                        <td>5 years</td>
-                        <td>1234567890</td>
-                        <td>amina1@gmail.com</td>
-                    </tr>
+
+                    <?php
+                            if($sql->num_rows>0){
+                                while($row=mysqli_fetch_array($sql)){
+                        ?>
+                        <tr>
+                               <td><?php echo $row['booking_id'];?></td>
+                               <td><?php echo $row['name']; ?></td>
+                               <td><?php echo $row['dr_name']; ?></td>
+                               <!-- <td><?php echo $row['dept_name']; ?></td> -->
+                               <td><?php echo $row['hsptl_name']; ?></td>
+                               <td><?php echo $row['date']; ?></td>
+                               <td><?php echo $row['time']; ?></td>
+                               <td><?php echo $row['type']; ?></td>
+                               <td><a href="edit.php?id=<?php echo $row['log_id']?>"class="btn btn-primary"><i class="fa fa-lg fa-edit"></i></a>&nbsp
+                               <a href="delete.php?id=<?php echo $row['log_id']?>"class="btn btn-primary"><i class="fa fa-lg fa-trash"></i></a></td>
+                        </tr>
+                        <?php
+                            }
+                         }
+                         ?>
                 </table>
             </div>
         </div>

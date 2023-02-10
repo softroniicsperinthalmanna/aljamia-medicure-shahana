@@ -1,3 +1,20 @@
+<?php
+        include 'connect.php';
+        $res1=$con->query("SELECT COUNT(*) AS usercount FROM user_tb");
+        if($res1){
+            // $userCount=mysqli_num_rows($res1);
+            $data=mysqli_fetch_assoc($res1);
+
+        }
+        $res2=$con->query("SELECT COUNT(*) AS hsptlcount FROM hospital_tb");
+        if($res2){
+            $data2=mysqli_fetch_assoc($res2);
+        }
+        $res3=$con->query("SELECT COUNT(*) AS appointment FROM booking_tb");
+        if($res3){
+            $data3=mysqli_fetch_assoc($res3);
+        }
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +36,7 @@
         <i class="fas fa-bell"></i>
         </a>
         <div class="user">
-            <a href="edit.html">
+            <a href="profile.html">
             <img src="img.jpg" alt="">
             </a>
         </div>
@@ -27,25 +44,25 @@
       <div class="sidebar">
         <ul>
             <li>
-                <a href="admin.html">
+                <a href="admin.php">
                     <i class="fas fa-th-large"></i>
                     <div>Dashboard</div>
                 </a>
             </li>
             <li>
-                <a href="user.html">
+                <a href="user.php">
                     <i class="fas fa-user"></i>
                     <div>User</div>
                 </a>
             </li>
             <li>
-                <a href="hospital.html">
+                <a href="hospital.php">
                     <i class="fas fa-hospital"></i>
                     <div>Hospital</div>
                 </a>
             </li>
             <li>
-                <a href="appointment.html">
+                <a href="appointment.php">
                     <i class="far fa-calendar-alt"></i>
                     <div>Appointment</div>
                 </a>
@@ -69,35 +86,37 @@
       <div class="main">
         <div class="cards">
             <div class="card">
+                <a href="user.php"><button>
                 <div class="card-content">
-                    <a href="user.html">
+                    
                     <div class="card-name">User</div>
-                    <div class="number">1200</div>
+                    <div class="number"><?php echo $data ['usercount']; ?></div>
                 </div>
                 <div class="icon-box">
                     <i class="fas fa-user"></i>
-                </div></a>
+                </div></button></a>
             </div>
             <div class="card">
-                
+                <a href="hospital.php"><button>
                 <div class="card-content">
-                    <a href="hospital.html">
+                    
                     <div class="card-name">Hospital</div>
-                    <div class="number">60</div>
+                    <div class="number"><?php echo $data2 ['hsptlcount'] ;?></div>
                 </div>
                 <div class="icon-box">
                     <i class="fas fa-hospital"></i>
-                </div></a>
+                </div></button></a>
             </div>
             <div class="card">
+                <a href="appointment.php"> <button>
                 <div class="card-content">
-                    <a href="appointment.html">
+                    
                     <div class="card-name">Appointment</div>
-                    <div class="number">36</div>
+                    <div class="number"><?php echo $data3 ['appointment'] ; ?></div>
                 </div>
                 <div class="icon-box">
                     <i class="far fa-calendar-alt"></i>
-                </div></a>
+                </div></button></a>
             </div>
         </div>
         <div class="charts">

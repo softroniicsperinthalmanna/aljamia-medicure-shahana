@@ -98,7 +98,7 @@ section .content-box .form-box .inputbx input[type="submit"]{
     cursor: pointer;
 }
 
-section .content-box .form-box .inputbx input[type="button"]:hover{
+section .content-box .form-box .inputbx input[type="submit"]:hover{
     background: #f53677;
 }
 
@@ -109,11 +109,11 @@ section .content-box .form-box .remember{
     font-size: 14px;
 }
 
-section .content-box .form-box .inputbx p{
+/* section .content-box .form-box .inputbx p{
     color: #607d8b;
 }
 
 section .content-box .form-box .inputbx p a{
     color: #ff4584;
 }
-
+ */

@@ -1,3 +1,8 @@
+<?php
+         include 'connect.php';
+         $sql=mysqli_query($con,"SELECT * from ambul_tb inner join login_tb on ambulance_tb.log_id=login_tb.log_id inner join hospital_tb on ambulance_tb.hsptl_id=hospital_tb.hsptl_id;");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -153,25 +158,25 @@ img{
       <div class="sidebar">
         <ul>
             <li>
-                <a href="admin.html">
+                <a href="admin.php">
                     <i class="fas fa-th-large"></i>
                     <div>Dashboard</div>
                 </a>
             </li>
             <li>
-                <a href="user.html">
+                <a href="user.php">
                     <i class="fas fa-user"></i>
                     <div>User</div>
                 </a>
             </li>
             <li>
-                <a href="hospital.html">
+                <a href="hospital.php">
                     <i class="fas fa-hospital"></i>
                     <div>Hospital</div>
                 </a>
             </li>
             <li>
-                <a href="appointment.html">
+                <a href="appointment.php">
                     <i class="far fa-calendar-alt"></i>
                     <div>Appointment</div>
                 </a>

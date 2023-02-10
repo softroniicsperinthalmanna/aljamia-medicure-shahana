@@ -1,3 +1,8 @@
+<?php
+         include 'connect.php';
+         $sql=mysqli_query($con,"SELECT * from doctor_tb inner join login_tb on doctor_tb.log_id=login_tb.log_id inner join department_tb on doctor_tb.dept_id=department_tb.dept_id inner join hospital_tb on doctor_tb.hsptl_id=hospital_tb.hsptl_id;");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -148,25 +153,25 @@ tr:nth-child(even){
       <div class="sidebar">
         <ul>
             <li>
-                <a href="admin.html">
+                <a href="admin.php">
                     <i class="fas fa-th-large"></i>
                     <div>Dashboard</div>
                 </a>
             </li>
             <li>
-                <a href="user.html">
+                <a href="user.php">
                     <i class="fas fa-user"></i>
                     <div>User</div>
                 </a>
             </li>
             <li>
-                <a href="hospital.html">
+                <a href="hospital.php">
                     <i class="fas fa-hospital"></i>
                     <div>Hospital</div>
                 </a>
             </li>
             <li>
-                <a href="appointment.html">
+                <a href="appointment.php">
                     <i class="far fa-calendar-alt"></i>
                     <div>Appointment</div>
                 </a>
@@ -181,7 +186,7 @@ tr:nth-child(even){
       </div>
       <div class="heading">
         <i class="fas fa-align-right"></i>
-        <h3>Ambulance</h3>
+        <h3>Doctor</h3>
       </div>
       <div class="main">
         <div class="table">
@@ -190,48 +195,35 @@ tr:nth-child(even){
                     <tr>
                         <th>SI.No</th>
                         <th>Name</th>
-                        <th>Hospital name</th>
-                        <th>Age</th>
-                        <th>phone</th>
-                        <th>Vehicle no</th>
+                        <th>Qualification</th>
+                        <th>Department</th>
+                        <th>Experiance</th>
+                        <th>shift</th>
+                        <th>Phone</th>
                         <th>Email</th>
+                        <th>Action</th>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Rahul</td>
-                        <td>ABC Hospital</td>
-                        <td>27</td>
-                        <td>7600000000</td>
-                        <td>KL 10  6009</td>
-                        <td>rahul1@gmail.com</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Basil</td>
-                        <td>ABC Hospital</td>
-                        <td>27</td>
-                        <td>7600000000</td>
-                        <td>KL 10  6009</td>
-                        <td>rahul1@gmail.com</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Althaf</td>
-                        <td>ABC Hospital</td>
-                        <td>27</td>
-                        <td>7600000000</td>
-                        <td>KL 10  6009</td>
-                        <td>rahul1@gmail.com</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Muhammed</td>
-                        <td>ABC Hospital</td>
-                        <td>27</td>
-                        <td>7600000000</td>
-                        <td>KL 10  6009</td>
-                        <td>rahul1@gmail.com</td>
-                    </tr>
+
+                    <?php
+                            if($sql->num_rows>0){
+                                while($row=mysqli_fetch_array($sql)){
+                        ?>
+                        <tr>
+                               <td><?php echo $row['dr_id'];?></td>
+                               <td><?php echo $row['dr_name']; ?></td>
+                               <td><?php echo $row['qual']; ?></td>
+                               <td><?php echo $row['dept_name']; ?></td>
+                               <td><?php echo $row['exp']; ?></td>
+                               <td><?php echo $row['shift']; ?></td>
+                               <td><?php echo $row['phn_no']; ?></td>
+                               <td><?php echo $row['email']; ?></td>
+                               <td><a href="edit.php?id=<?php echo $row['log_id']?>"class="btn btn-primary"><i class="fa fa-lg fa-edit"></i></a>&nbsp
+                               <a href="delete.php?id=<?php echo $row['log_id']?>"class="btn btn-primary"><i class="fa fa-lg fa-trash"></i></a></td>
+                        </tr>
+                        <?php
+                            }
+                         }
+                         ?>
                 </table>
             </div>
         </div>

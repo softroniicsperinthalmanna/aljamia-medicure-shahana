@@ -1,3 +1,8 @@
+<?php
+         include 'connect.php';
+         $sql=mysqli_query($con,"SELECT * from ambulance_tb inner join login_tb on ambulance_tb.log_id=login_tb.log_id inner join hospital_tb on ambulance_tb.hsptl_id=hospital_tb.hsptl_id;");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +21,7 @@
 }
 
 .user{
-    position: relative;
+    position: relative; 
     width: 50px;
     height: 50px;
 }
@@ -148,25 +153,25 @@ tr:nth-child(even){
       <div class="sidebar">
         <ul>
             <li>
-                <a href="admin.html">
+                <a href="admin.php">
                     <i class="fas fa-th-large"></i>
                     <div>Dashboard</div>
                 </a>
             </li>
             <li>
-                <a href="user.html">
+                <a href="user.php">
                     <i class="fas fa-user"></i>
                     <div>User</div>
                 </a>
             </li>
             <li>
-                <a href="hospital.html">
+                <a href="hospital.php">
                     <i class="fas fa-hospital"></i>
                     <div>Hospital</div>
                 </a>
             </li>
             <li>
-                <a href="appointment.html">
+                <a href="appointment.php">
                     <i class="far fa-calendar-alt"></i>
                     <div>Appointment</div>
                 </a>
@@ -190,53 +195,34 @@ tr:nth-child(even){
                     <tr>
                         <th>SI.No</th>
                         <th>Name</th>
-                        <th>Appointment with</th>
-                        <th>Department</th>
-                        <th>Hospital</th>
-                        <th>Date</th>
-                        <th>Time</th>
-                        <th>Consultation</th>
+                        <th>Hospital name</th>
+                        <th>Age</th>
+                        <th>phone</th>
+                        <th>Vehicle no</th>
+                        <th>Email</th>
+                        <th>Action</th>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Fathima</td>
-                        <td>Dr.Aysha</td>
-                        <td>Cardiology</td>
-                        <td>ABC Hospital</td>
-                        <td>12-12-2022</td>
-                        <td>2:00pm</td>
-                        <td>Offline</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Fathima</td>
-                        <td>Dr.Aysha</td>
-                        <td>Cardiology</td>
-                        <td>ABC Hospital</td>
-                        <td>12-12-2022</td>
-                        <td>2:00pm</td>
-                        <td>Offline</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Althaf</td>
-                        <td>Dr.Aysha</td>
-                        <td>Cardiology</td>
-                        <td>ABC Hospital</td>
-                        <td>12-12-2022</td>
-                        <td>2:00pm</td>
-                        <td>Offline</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Muhammed</td>
-                        <td>Dr.Aysha</td>
-                        <td>Cardiology</td>
-                        <td>ABC Hospital</td>
-                        <td>12-12-2022</td>
-                        <td>2:00pm</td>
-                        <td>Offline</td>
-                    </tr>
+
+                    <?php
+                            if($sql->num_rows>0){
+                                while($row=mysqli_fetch_array($sql)){
+                        ?>
+                        <tr>
+                               <td><?php echo $row['amb_id'];?></td>
+                               <td><?php echo $row['name']; ?></td>
+                               <td><?php echo $row['hsptl_name']; ?></td>
+                               <td><?php echo $row['age']; ?></td>
+                               <td><?php echo $row['phn_no']; ?></td>
+                               <td><?php echo $row['vhcl_no']; ?></td>
+                               <td><?php echo $row['email']; ?></td>
+                               <td><a href="edit.php?id=<?php echo $row['log_id']?>"class="btn btn-primary"><i class="fa fa-lg fa-edit"></i></a>&nbsp
+                               <a href="delete.php?id=<?php echo $row['log_id']?>"class="btn btn-primary"><i class="fa fa-lg fa-trash"></i></a></td>
+                        </tr>
+                        <?php
+                            }
+                         }
+                         ?>
+                    
                 </table>
             </div>
         </div>
