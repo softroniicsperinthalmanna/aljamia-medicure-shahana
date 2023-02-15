@@ -197,6 +197,7 @@ tr:nth-child(even){
                         <th>Name</th>
                         <th>Hospital name</th>
                         <th>Age</th>
+                        <th>place</th>
                         <th>phone</th>
                         <th>Vehicle no</th>
                         <th>Email</th>
@@ -212,6 +213,7 @@ tr:nth-child(even){
                                <td><?php echo $row['name']; ?></td>
                                <td><?php echo $row['hsptl_name']; ?></td>
                                <td><?php echo $row['age']; ?></td>
+                               <td><?php echo $row['place']; ?></td>
                                <td><?php echo $row['phn_no']; ?></td>
                                <td><?php echo $row['vhcl_no']; ?></td>
                                <td><?php echo $row['email']; ?></td>

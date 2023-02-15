@@ -200,7 +200,7 @@ tr:nth-child(even){
                         <th>Experiance</th>
                         <th>shift</th>
                         <th>Phone</th>
-                        <th>Email</th>
+                         <th>Email</th>
                         <th>Action</th>
                     </tr>
 

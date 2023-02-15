@@ -250,8 +250,8 @@ tr:nth-child(even){
                                <td><?php echo $row['gender']; ?></td>
                                <td><?php echo $row['place']; ?></td>
                                <td><?php echo $row['phn_no']; ?></td>
-                               <td><?php echo $row['email']; ?></td>
-                               <td><a href="edit.php?id=<?php echo $row['log_id']?>"class="btn btn-primary"><i class="fa fa-lg fa-edit"></i></a>&nbsp
+                               <td> <?php echo $row['email']; ?></td>
+                               <td><a href="user edit.php?id=<?php echo $row['log_id']?>"class="btn btn-primary"><i class="fa fa-lg fa-edit"></i></a>&nbsp
                                <a href="delete.php?id=<?php echo $row['log_id']?>"class="btn btn-primary"><i class="fa fa-lg fa-trash"></i></a></td>
                         </tr>
                         <?php
